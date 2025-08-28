@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Event Handling Example</title>
+  <style>
+    body { font-family: Arial, sans-serif; padding: 20px; }
+    #hoverBox {
+      width: 150px; height: 150px; background: lightgray;
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: 20px; border-radius: 10px; cursor: pointer;
+    }
+    form { margin-top: 20px; }
+    input { margin: 5px 0; padding: 8px; width: 200px; }
+    button { padding: 8px 15px; cursor: pointer; }
+  </style>
+</head>
+<body>
+
+  <h2>JavaScript Event Handling Demo</h2>
+
+  <!-- Button Event -->
+  <button id="clickBtn">Click Me</button>
+  <p id="clickMessage"></p>
+
+  <!-- Mouse Events -->
+  <div id="hoverBox">Hover over me</div>
+  <p id="hoverMessage"></p>
+
+  <!-- Form Event -->
+  <form id="myForm">
+    <input type="text" id="username" placeholder="Enter username" required><br>
+    <input type="email" id="email" placeholder="Enter email" required><br>
+    <button type="submit">Submit</button>
+  </form>
+  <p id="formMessage"></p>
+
+  <script>
+    // 1. Button Click Event
+    document.getElementById("clickBtn").addEventListener("click", function() {
+      document.getElementById("clickMessage").innerText = "Button was clicked!";
+    });
+
+    // 2. Mouse Events (mouseover & mouseout)
+    let hoverBox = document.getElementById("hoverBox");
+    let hoverMsg = document.getElementById("hoverMessage");
+
+    hoverBox.addEventListener("mouseover", function() {
+      hoverBox.style.background = "lightgreen";
+      hoverMsg.innerText = "Mouse is over the box!";
+    });
+
+    hoverBox.addEventListener("mouseout", function() {
+      hoverBox.style.background = "lightgray";
+      hoverMsg.innerText = "Mouse left the box.";
+    });
+
+    // 3. Form Submit Event
+    document.getElementById("myForm").addEventListener("submit", function(event) {
+      event.preventDefault(); // prevent page reload
+
+      let username = document.getElementById("username").value;
+      let email = document.getElementById("email").value;
+      let formMsg = document.getElementById("formMessage");
+
+      if(username === "" || email === "") {
+        formMsg.innerText = " Please fill out all fields!";
+        formMsg.style.color = "red";
+      } else {
+        formMsg.innerText = "Form submitted successfully!\nUsername: " + username + "\nEmail: " + email;
+        formMsg.style.color = "green";
+      }
+    });
+  </script>
+
+</body>
+</html>
