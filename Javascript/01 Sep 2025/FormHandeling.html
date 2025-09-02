@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Form Handling</title>
+</head>
+<body>
+  <h2>Form Handling Example</h2>
+
+  <!-- Form -->
+  <form id="myForm">
+    <label for="username">Enter your name:</label>
+    <input id="username" type="text" placeholder="Your name">
+    <button type="submit">Submit</button>
+  </form>
+
+  <!-- Message -->
+  <p id="formMsg"></p>
+
+  <script>
+    // Select form and message
+    const form = document.getElementById("myForm");
+    const formMsg = document.getElementById("formMsg");
+
+    // Add submit event listener
+    form.addEventListener("submit", (event) => {
+
+      event.preventDefault(); // Stop reload
+      const name = document.getElementById("username").value;
+
+      if (name === "") {
+        formMsg.textContent = "Please enter your name!";
+        formMsg.style.color = "red";
+      } else {
+        formMsg.textContent = "Hello " + name + " 👋";
+        formMsg.style.color = "green";
+      }
+    });
+  </script>
+</body>
+</html>

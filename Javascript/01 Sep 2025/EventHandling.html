@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Event Handling</title>
+</head>
+<body>
+  <h2>Event Handling Example</h2>
+
+  <!-- Button -->
+  <button id="btn">Click Me</button>
+  <p id="eventMsg"></p>
+
+  <script>
+    // Select elements
+    const button = document.getElementById("btn");
+    const eventMsg = document.getElementById("eventMsg");
+
+    // Add click event listener
+    button.addEventListener("click", () => {
+      eventMsg.textContent = "Button was clicked!";
+      eventMsg.style.color = "blue";
+    });
+  </script>
+</body>
+</html>
